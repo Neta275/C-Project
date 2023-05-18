@@ -1,0 +1,111 @@
+﻿<Window x:Class="Telhai.CS.FinalProject.Test"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Telhai.CS.FinalProject"
+        mc:Ignorable="d"
+        Title="Test" Height="450" Width="800">
+    <Grid>
+        <Grid Name="Exam" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid Name="MetaData" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label FontSize="16" Grid.Row="0" Grid.Column="0" Name="lbl_ExamName" Content="Exam Name"/>
+                <TextBox Background="AliceBlue" Name="txtExamName" Grid.Row="0" Grid.Column="1" TextChanged="txtExame_TextChanged"/>
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Label FontSize="16"  Name="lblId" Content="Exam ID" Width="120"/>
+                    <TextBox Background="AliceBlue" Name="txtID"  Width="160" />
+                </StackPanel>
+
+                <Label Name="lbl_TeacherName" Grid.Row="2" Grid.Column="0" Content="Teacher Name" FontSize="16"/>
+                <TextBox Background="AliceBlue" Name="txtTeacher" Grid.Row="2" Grid.Column="1" />
+
+                <StackPanel Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal">
+                    <Label FontSize="16"  Name="lblBegin_time" Content="Begin date and time" Width="auto"/>
+                    <TextBox Background="AliceBlue" Name="time_begining" Width="160"/>
+
+                </StackPanel>
+
+            </Grid>
+            <Grid x:Name="examArea" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="questions" Width="1*"/>
+                    <ColumnDefinition x:Name="answersCols" Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Name="QuestionsGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Background="AliceBlue"  Name="btn_AddQuestion" Content="Questions"  ></Label>
+                    <ListBox Grid.Row="1" Name="QuestionsLB" Grid.Column="1" SelectionChanged="QuestionsLB_SelectionChanged" />
+                </Grid>
+                <Grid x:Name="SingleQuestion" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Name="header" Height ="auto"/>
+                        <RowDefinition Name="QuestionText" Height ="auto"/>
+                        <RowDefinition Name="AnswersList" Height="79*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Name="question_desc" Content="Question area" HorizontalAlignment="Center" Margin="0,0,0,16" Grid.RowSpan="2"/>
+                    <TextBox Grid.Row="1" x:Name="textQuestion" TextWrapping="Wrap" Margin="0,0,0,30" Grid.RowSpan="2"/>
+                    <DockPanel Grid.Row="2" Margin="0,0,0,237" Grid.RowSpan="2" Height="25">
+                        <Label Name="Path" HorizontalAlignment="Stretch" />
+                    </DockPanel>
+                    <Grid Name="AnswersColumn" Grid.Row="3" >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Name="PhotoColumn" Width="43*"/>
+                            <ColumnDefinition Width="92*"/>
+                            <ColumnDefinition Width="90*" Name="Answers"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Name="QuestionImage" Grid.Row="0" />
+                            <Button Content="submit Exam" Background="Green" Name="submit_Exam" Grid.Row="1" Click="submit_Exam_Click"/>
+                        </Grid>
+
+
+                        <Grid Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="AddAnswer" Height="auto"/>
+                                <RowDefinition x:Name="blAnswers" Height="*"/>
+                                <RowDefinition x:Name="RemoveAnswer" Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <DockPanel>
+                                <Label Name="Choose_Answer" Content="answer" Grid.Column="0"/>
+                                <TextBox Text="choose correct answer"/>
+                                <ComboBox Name="Correct_answer" SelectionChanged="Correct_answer_SelectionChanged" />
+                            </DockPanel>
+                            <ListBox Name="AnswersListBox" Grid.Row="1" Grid.Column="0"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>
